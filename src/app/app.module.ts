@@ -7,7 +7,7 @@ import { LandingPage } from '../pages/landing/landing';
 import { MainPage } from '../pages/main/main';
 import { UserPage } from '../pages/user/user';
 import { SettingsPage } from '../pages/settings/settings';
-import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tab s';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
