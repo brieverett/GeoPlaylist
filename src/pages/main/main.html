@@ -14,5 +14,12 @@
 
 
 <ion-content padding>
-
+  <ion-card>
+  <ion-card-content>
+    <button ion-button (click)="watch()">Get Position</button>
+    <p>Position: {{ coords }}</p>
+    <p>Accuracy: {{ accuracy }} meters</p>
+    <p *ngIf="error">{{ error }}</p>
+  </ion-card-content>
+</ion-card>
 </ion-content>
