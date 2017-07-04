@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Geofence } from '@ionic-native/geofence';
+import { ActivePage } from '../active/active';
 
 /**
  * Generated class for the MainPage page.
@@ -18,8 +20,19 @@ export class MainPage {
   coords: any;
   accuracy: any;
   error: any;
+  radius: number = 500;
+  fenceerror: any;
+  success:any;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private geofence: Geofence, private platform: Platform) {
+    this.platform.ready().then(() => {
+         
+      this.geofence.initialize().then(
+        () => console.log('Geofence Plugin Ready'),
+        (err) => console.log(err)
+      );
+      
+    });
   }
 
   ionViewDidLoad() {
@@ -35,7 +48,40 @@ export class MainPage {
     });
   }
 
+  setGeofence(value: number) {
 
+    this.geolocation.getCurrentPosition({
+      enableHighAccuracy: true
+    }).then((resp) => {
+      var longitude = resp.coords.longitude;
+      var latitude = resp.coords.latitude;
+      var radius = value;
+
+      let fence = {
+          id: "myGeofenceID1", 
+          latitude:       latitude, 
+          longitude:      longitude,
+          radius:         radius,  
+          transitionType: 2
+        }
+      
+        this.geofence.addOrUpdate(fence).then(
+          () => this.success = true,
+          (err) => this.error = "Failed to add or update the fence."
+        );
+
+        this.geofence.onTransitionReceived().subscribe(resp => {
+          //SMS.send('5555555555', 'OMG She lied, leave her now!');
+          console.log("entered geofence");
+        });
+
+        this.navCtrl.push(ActivePage);
+
+
+    }).catch((error) => {
+      this.error = error;
+    });
+  }
 
 
 

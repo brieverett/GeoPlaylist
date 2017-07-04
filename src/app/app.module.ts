@@ -12,6 +12,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Geofence } from '@ionic-native/geofence';
+import { ActivePage } from '../pages/active/active';
+
 
 let injections: any[]=[
     MyApp,
@@ -19,7 +22,8 @@ let injections: any[]=[
     MainPage,
     UserPage,
     SettingsPage,
-    TabsPage
+    TabsPage,
+    ActivePage
   ]
   
 @NgModule({
@@ -34,6 +38,7 @@ let injections: any[]=[
     StatusBar,
     SplashScreen,
     Geolocation,
+    Geofence,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
