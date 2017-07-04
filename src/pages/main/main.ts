@@ -83,7 +83,7 @@ export class MainPage {
   
   // B- google maps!!! copied from ionic docs
   // B- trying to display the map with existing geofence. 
-  // B- TODO: get geofences from new geofence provider
+  // B- TODO: create geofence provider to get geofences
   
   ngAfterViewInit() {
      this.loadMap();
@@ -106,17 +106,6 @@ export class MainPage {
            .radius(100)
            .strokeColor(Color.RED)
            .fillColor(Color.BLUE));
-         //B - the following addcircle code is awg , A Wild Guess
-        /*addCircle({
-          center: ( 32.709553,-117.157958),
-          map: this.map,
-          radius: 500,
-          strokeColor: "red",
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: "red",
-          clickable: false,
-        })*/
        }
      );
     
