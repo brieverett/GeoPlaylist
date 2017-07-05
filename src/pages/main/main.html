@@ -19,5 +19,17 @@
 
 
 <ion-content padding>
-
+<div>
+<form #registerForm="ngForm" (ngSubmit)="songForm(songAddForm)" novalidate>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input name="Title" type="text" placeholder="best song ever" [(ngModel)]="Song.Song_Title"></ion-input>
+    </ion-item>
+    <ion-item>
+    <button ion-button type="submit" class="button-block">
+      Add
+    </button>
+    </ion-item>
+  </form>
+</div>
 </ion-content>

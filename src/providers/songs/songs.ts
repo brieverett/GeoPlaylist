@@ -14,5 +14,13 @@ export class SongsProvider {
   constructor(public http: Http) {
     console.log('Hello SongsProvider Provider');
   }
-
+  baseUrl: string= "https://briannassf-phortonssf.c9users.io:8080/api"
+  path: string= "/Songs"
+  
+  addSong(newSong) {
+    return this.http.post(
+      this.baseUrl + this.path,
+      newSong
+    );
+  }
 }
