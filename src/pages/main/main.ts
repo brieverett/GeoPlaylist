@@ -89,7 +89,7 @@ export class MainPage {
      this.loadMap();
     }
     
-  loadMap() {
+ /* loadMap() {
       let element: HTMLElement = document.getElementById('map');
     
      let map: GoogleMap = this.googleMaps.create(element);
@@ -134,4 +134,4 @@ export class MainPage {
         });
      }
     
-    }
+    }*/
