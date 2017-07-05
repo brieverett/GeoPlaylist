@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { LandingPage } from '../pages/landing/landing';
 import { MainPage } from '../pages/main/main';
@@ -12,8 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { AppUsersProvider } from '../providers/app-users/app-users';
 import { PlaylistProvider } from '../providers/playlist/playlist';
 import { SongsProvider } from '../providers/songs/songs';
@@ -44,7 +46,8 @@ let injections: any[]=[
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppUsersProvider,
     PlaylistProvider,
-    SongsProvider
+    SongsProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
