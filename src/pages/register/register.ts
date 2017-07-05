@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppUsersProvider } from '../../providers/app-users/app-users';
-import { MainPage } from './../main/main'
+import { MainPage } from './../main/main';
+import { TabsPage } from './../tabs/tabs'
 
 /**
  * Generated class for the RegisterPage page.
@@ -18,7 +19,7 @@ export class RegisterPage {
   user: any = {}
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
-  public AppUsers: AppUsersProvider) {
+  public appUsers: AppUsersProvider) {
   }
 
   ionViewDidLoad() {
@@ -29,16 +30,13 @@ export class RegisterPage {
       if(form.invalid) {
       return alert("Please fill in all of the required fields.");
       }
-    if(form.invalid) {
-      return alert("Please fill in all of the required fields.");
-    }
-    this.AppUsers.register(this.user)
+    this.appUsers.register(this.user)
     .map(res => res.json())
     .subscribe(res => {
       // handle successful responses and decide what happens next
       window.localStorage.setItem('token', res.token);
       window.localStorage.setItem('userId', res.id);
-      this.navCtrl.setRoot(MainPage);
+      this.navCtrl.setRoot(TabsPage);
     }, error => {
        alert("Please register again.");
       }
