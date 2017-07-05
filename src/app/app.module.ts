@@ -6,6 +6,17 @@ import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Geofence } from '@ionic-native/geofence';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
+
 
 import { LandingPage } from '../pages/landing/landing';
 import { MainPage } from '../pages/main/main';
@@ -47,7 +58,15 @@ let injections: any[]=[
     AppUsersProvider,
     PlaylistProvider,
     SongsProvider,
-    Geolocation
+    Geolocation,
+    Geofence,
+    GoogleMaps,
+     GoogleMap,
+     GoogleMapsEvent,
+     LatLng,
+    CameraPosition,
+    MarkerOptions,
+     Marker
   ]
 })
 export class AppModule {}
