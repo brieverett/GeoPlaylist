@@ -26,18 +26,19 @@ export class AppUsersProvider {
     );
   }
 
-  /*login(userData) {
+  login(userData) {
     return this.http.post(
       this.baseUrl + this.path + "/login",
       userData
     );
-  }*/
+  }
   
- /* logout(token){
+ logout(token){
     return this.http.post(
       this.baseUrl + this.path + '/logout' + 
         '?access_token=' + token,
         {}
       );
-  }*/
+  }
+  
 }
