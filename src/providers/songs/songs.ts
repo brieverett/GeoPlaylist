@@ -23,4 +23,11 @@ export class SongsProvider {
       newSong
     );
   }
+  
+  goToGeoPlaylist(token){
+    return this.http.get(
+        this.baseUrl + this.path + 
+          '?access_token=' + token
+          );
+    }
 }

@@ -15,10 +15,30 @@ import { TabsPage } from './../tabs/tabs'
   templateUrl: 'main.html',
 })
 export class MainPage {
-  songInfo: any = {}
+  songInfo: any = {};
+  GeoPlaylist: any;
+  
+  
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   public Songs: SongsProvider) {
+    
+    this.Songs.goToGeoPlaylist(window.localStorage.getItem("token"))
+    .map(res => res.json())
+    .subscribe(res => {
+      console.log("res", res);
+      this.GeoPlaylist = res;
+      console.log("GeoPlaylist",this.GeoPlaylist)
+      /*for(let singleQuestion of apiQuestions){
+        if(!this.questions[singleQuestion.Question_Number - 1]){
+        this.questions[singleQuestion.Question_Number - 1] = {};
+        }
+        this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID]=singleQuestion;
+      }*/
+      }, error => {
+        alert("Warning Will Robinson!");
+    });
+    
   }
 
   ionViewDidLoad() {
@@ -50,4 +70,6 @@ export class MainPage {
     );
 
   }
+  
+
 }
