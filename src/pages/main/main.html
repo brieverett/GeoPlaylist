@@ -14,16 +14,31 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+ <style> 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: cornflowerblue;
+    -webkit-flex-direction: row; 
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
 
+</style>
 </ion-header>
 
 
 <ion-content padding>
-<div>
-<form #registerForm="ngForm" (ngSubmit)="songForm(songAddForm)" novalidate>
+<div class="flex-container" >
+<form #songAddForm="ngForm" (ngSubmit)="songForm(songAddForm)" novalidate>
     <ion-item>
       <ion-label>Title</ion-label>
-      <ion-input name="Title" type="text" placeholder="best song ever" [(ngModel)]="Song.Song_Title"></ion-input>
+      <ion-input name="Title" type="text" placeholder="best song ever" [(ngModel)]="songInfo.Song_Title"></ion-input>
     </ion-item>
     <ion-item>
     <button ion-button type="submit" class="button-block">

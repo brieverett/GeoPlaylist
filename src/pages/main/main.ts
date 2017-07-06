@@ -15,8 +15,10 @@ import { TabsPage } from './../tabs/tabs'
   templateUrl: 'main.html',
 })
 export class MainPage {
-  Song_Title: any = {}
-  constructor(public navCtrl: NavController, public navParams: NavParams, public Songs: SongsProvider) {
+  songInfo: any = {}
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams, 
+  public Songs: SongsProvider) {
   }
 
   ionViewDidLoad() {
@@ -27,7 +29,8 @@ export class MainPage {
       if(form.invalid) {
       return alert("nope, no song");
       }
-    this.Songs.addSong(this.Song_Title)
+    console.log("songInfo", this.songInfo)
+    this.Songs.addSong(this.songInfo)
     .map(res => res.json())
     .subscribe(res => {
       // handle successful responses and decide what happens next
@@ -35,7 +38,7 @@ export class MainPage {
       window.localStorage.setItem('id', res.id);
       this.navCtrl.setRoot(TabsPage);
     }, error => {
-       alert("Please register again.");
+       alert("Please try again.");
       }
       // inform the user of any known problems that arose, otherwise give a generic
       // failed message

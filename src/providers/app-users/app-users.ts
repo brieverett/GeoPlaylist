@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { RegisterPage } from '../../pages/register/register';
-//import { LoginPage } from '../../pages/login/login';
+import { LoginPage } from '../../pages/login/login';
 /*
   Generated class for the AppUsersProvider provider.
 
