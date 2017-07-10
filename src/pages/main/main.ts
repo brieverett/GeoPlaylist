@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SongsProvider } from '../../providers/songs/songs';
 import { TabsPage } from './../tabs/tabs'
+import { LandingPage } from './../landing/landing'
+import { AppUsersProvider } from '../../providers/app-users/app-users';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Geofence } from '@ionic-native/geofence';
 import {
@@ -37,7 +39,8 @@ export class MainPage {
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   public Songs: SongsProvider,
-  private googleMaps: GoogleMaps) {
+  private googleMaps: GoogleMaps,
+  public appUsers: AppUsersProvider) {
     
     this.Songs.goToGeoPlaylist(window.localStorage.getItem("token"))
     .map(res => res.json())
@@ -102,5 +105,8 @@ export class MainPage {
 
   }
 
+  logout(){
+      this.navCtrl.setRoot(LandingPage);
+    }
   
 }
