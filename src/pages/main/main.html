@@ -18,6 +18,9 @@
 
 
 <ion-content padding>
+  <div class="container">
+    <div #map id="map" ></div> 
+    <div class="formcolumn">
     <div class="addsong" >
     <form #songAddForm="ngForm" (ngSubmit)="songForm(songAddForm)" novalidate>
         <ion-item>
@@ -31,15 +34,13 @@
         </ion-item>
       </form>
     </div>
-    
-    <div class="playlist" >
+     <div class="playlist" >
       <ion-list>
         <ion-item *ngFor="let playlistItem of GeoPlaylist">
            {{playlistItem.Song_Title}}
         </ion-item>
     </ion-list>
     </div>
+    </div>
+  </div>
 </ion-content>
-
-
-<!--B - getting the playlist based off getting the results from tk test-->

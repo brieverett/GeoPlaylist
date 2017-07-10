@@ -18,6 +18,16 @@ import { AppUsersProvider } from '../providers/app-users/app-users';
 import { PlaylistProvider } from '../providers/playlist/playlist';
 import { SongsProvider } from '../providers/songs/songs';
 
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
+
 let injections: any[]=[
     MyApp,
     LandingPage,
@@ -44,7 +54,8 @@ let injections: any[]=[
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppUsersProvider,
     PlaylistProvider,
-    SongsProvider
+    SongsProvider,
+    GoogleMaps
   ]
 })
 export class AppModule {}

@@ -1,7 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SongsProvider } from '../../providers/songs/songs';
 import { TabsPage } from './../tabs/tabs'
+import { Geolocation } from '@ionic-native/geolocation';
+import { Geofence } from '@ionic-native/geofence';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
+
+declare var google;
 
 /**
  * Generated class for the MainPage page.
@@ -17,11 +30,14 @@ import { TabsPage } from './../tabs/tabs'
 export class MainPage {
   songInfo: any = {};
   GeoPlaylist: any;
-  
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+
   
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
-  public Songs: SongsProvider) {
+  public Songs: SongsProvider,
+  private googleMaps: GoogleMaps) {
     
     this.Songs.goToGeoPlaylist(window.localStorage.getItem("token"))
     .map(res => res.json())
@@ -43,6 +59,7 @@ export class MainPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
+    this.loadMap();
   }
 
     songForm(form) { 
@@ -70,6 +87,20 @@ export class MainPage {
     );
 
   }
+    
+  loadMap(){
   
+    let latLng = new google.maps.LatLng(32.709553,-117.157958);
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+ 
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+  }
+
+  
 }
