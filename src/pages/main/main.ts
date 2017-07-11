@@ -1,11 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SongsProvider } from '../../providers/songs/songs';
-import { TabsPage } from './../tabs/tabs'
-import { LandingPage } from './../landing/landing'
+import { TabsPage } from './../tabs/tabs';
+import { LandingPage } from './../landing/landing';
 import { AppUsersProvider } from '../../providers/app-users/app-users';
-import { Geolocation } from '@ionic-native/geolocation';
-import { Geofence } from '@ionic-native/geofence';
 import {
  GoogleMaps,
  GoogleMap,
@@ -57,7 +55,7 @@ export class MainPage {
       }, error => {
         alert("Warning Will Robinson!");
     });
-    
+  
   }
 
   ionViewDidLoad() {
@@ -90,7 +88,8 @@ export class MainPage {
     );
 
   }
-    
+  
+  //LEARN 32.709553,-117.157958  , don't forget importing here and in the module, also the ionic plugin
   loadMap(){
   
     let latLng = new google.maps.LatLng(32.709553,-117.157958);
@@ -105,8 +104,51 @@ export class MainPage {
 
   }
 
+  // josh morony to implement geolocation centers
+/*    loadMap(){
+ 
+    this.geolocation.getCurrentPosition().then((position) => {
+ 
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+ 
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+ 
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+ 
+    }, (err) => {
+      console.log(err);
+    });
+ 
+  }
+  
+  addMarker(){
+ 
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+   
+    let content = "<h4>Information!</h4>";          
+   
+    this.addInfoWindow(marker, content);
+ 
+  }*/
+
   logout(){
+      this.appUsers.logout(window.localStorage.getItem("token"))
+    .map(res => res.json())
+    .subscribe(res => {
+      console.log("res", res);
+      }, error => {
+        alert("Logout Error");
+    });
       this.navCtrl.setRoot(LandingPage);
     }
   
 }
+
